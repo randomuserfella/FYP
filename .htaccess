@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteRule ^$ /procratrack/index.php [R=301,L]
+
+# ── Block direct access to sensitive file types ─────────────────────────────
+# These should never be requested over HTTP — they're either internal data,
+# logs, or raw database files that have no business being served as web pages.
+<FilesMatch "\.(log|sql|frm|ibd|opt|env|bak|ini)$">
+    Require all denied
+</FilesMatch>
+
+# ── Block direct access to the config folder ────────────────────────────────
+# Files in here (db credentials, push keys) are only ever included by PHP,
+# never requested directly — so there's no reason a browser should reach them.
+<IfModule mod_alias.c>
+    RedirectMatch 403 ^/procratrack/config/
+</IfModule>

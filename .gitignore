@@ -1,0 +1,16 @@
+# secrets and local config
+config/secrets.php
+.env
+
+# runtime output
+logs/*
+!logs/.gitkeep
+*.log
+uploads/avatars/*
+!uploads/avatars/.gitkeep
+
+# raw database files (use SQL exports instead)
+*.ibd
+*.frm
+db.opt
+desktop.ini
