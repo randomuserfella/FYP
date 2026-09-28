@@ -69,6 +69,17 @@ Used to expose localhost to Telegram webhooks and for demo purposes.
 
 ---
 
+---
+
+## ngrok (alternative to Cloudflare Tunnel)
+
+1. Install ngrok from https://ngrok.com/download and add your authtoken: `ngrok config add-authtoken <TOKEN>`
+2. Windows: run `start_procratrack.bat`, which starts Apache and ngrok, registers the Telegram webhook, and updates `APP_URL` automatically.
+3. Manual: run `ngrok http 80`, then `php ngrok_setup.php` from the project folder.
+4. The free ngrok URL changes on every restart, so rerun the script each time.
+
+---
+
 ## Automated Reminders (Cron / Task Scheduler)
 
 `send_reminders.php` sends deadline reminders via Telegram and email. It must be run on a schedule.
